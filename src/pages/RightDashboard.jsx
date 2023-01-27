@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Table2 from '../components/Table2';
 import { Switch } from '@mui/material';
-import Donut from '../components/DoughnutComp';
+import DoughnutComp from '../components/DoughnutComp';
 
 
 export default function RightDashboard() {
@@ -18,7 +18,7 @@ export default function RightDashboard() {
                 {isTable ? (
                     <Table2 />
                 ) : (
-                    <Donut />
+                    <DoughnutComp />
                 )}
             </div>
         </>

@@ -147,8 +147,8 @@ export default function ReusableTable() {
   };
 
   return (
-    <Box className="box-container">
-      <Paper className="paper">
+    <Box className="box-container" style={{marginRight:"1rem"}}>
+      <div className="paper">
         <Typography className="ad-insights">Ad Insights</Typography>
         <TableContainer className="table-container">
           <Table className="table" aria-labelledby="tableTitle">
@@ -177,7 +177,7 @@ export default function ReusableTable() {
                         component="th"
                         id={labelId}
                         scope="row"
-                        padding="none"
+                        padding="100px"
                       >
                         {row.name}
                       </TableCell>
@@ -191,7 +191,7 @@ export default function ReusableTable() {
             </TableBody>
           </Table>
         </TableContainer>
-      </Paper>
+      </div>
     </Box>
   );
 }

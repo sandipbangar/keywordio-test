@@ -11,7 +11,7 @@ import TableSortLabel from "@mui/material/TableSortLabel";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import { visuallyHidden } from "@mui/utils";
-import "../styles/ReusableTableStyle.css"
+import "../styles/Table2Style.css"
 
 function createData(name, clicks, cost, conversion, revenue) {
   return {
@@ -144,33 +144,33 @@ export default function Table2() {
   };
 
   return (
-    <Box className="box-container">
-      <Paper className="paper">
-        <Typography className="ad-insights">Ad Insights</Typography>
-        <TableContainer className="table-container">
-          <Table className="table" aria-labelledby="tableTitle">
+    <Box className="box-container2">
+      <div className="paper2">
+        <Typography className="ad-insights2">Ad Insights</Typography>
+        <TableContainer className="table-container2">
+          <Table className="table2" aria-labelledby="tableTitle">
             <EnhancedTableHead
-              className="table-head"
+              className="table-head2"
               order={order}
               orderBy={orderBy}
               onRequestSort={handleRequestSort}
               rowCount={rows.length}
             />
-            <TableBody className="table-body">
+            <TableBody className="table-body2">
               {stableSort(rows, getComparator(order, orderBy))
                 .map((row, index) => {
                   const labelId = `enhanced-table-checkbox-${index}`;
 
                   return (
                     <TableRow
-                      className="table-row"
+                      className="table-row2"
                       hover
                       role="checkbox"
                       tabIndex={-1}
                       key={row.name}
                     >
                       <TableCell
-                        className="table-cell"
+                        className="table-cell2"
                         component="th"
                         id={labelId}
                         scope="row"
@@ -188,7 +188,7 @@ export default function Table2() {
             </TableBody>
           </Table>
         </TableContainer>
-      </Paper>
+      </div>
     </Box>
   );
 }
