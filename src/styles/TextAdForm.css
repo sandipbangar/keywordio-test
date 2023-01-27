@@ -46,3 +46,10 @@
     justify-content: flex-end;
     margin: 1rem;
 }
+.button-grid{
+    margin: 1rem;
+}
+.button{
+    width: 100px;
+    /* font-weight: bold; */
+}
