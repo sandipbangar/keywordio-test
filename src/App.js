@@ -1,23 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import ResponsiveAppBar from './pages/Navbar';
+import { Routes, Route} from 'react-router-dom';
+import CreateAd from './pages/CreateAd';
+import Dashboard from './pages/Dashboard';
+import { Card } from '@mui/material';
+import TextAdForm from './pages/TextAdForm';
+import MediaAdForm from './pages/MediaAdForm';
+import Submitted from './pages/Submitted';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ResponsiveAppBar/>
+      <Routes>
+        <Route path="/" element={<Dashboard/>}/>
+        <Route path="/createads" element={<CreateAd/>}/>
+        <Route path="/dashboard" element={<Dashboard/>}/>
+        <Route path="/textadform" element={<TextAdForm />} />
+        <Route path="/mediaadform" element={<MediaAdForm />} />
+        <Route path="/submitted" element={<Submitted />} />
+      </Routes>
+      <Card/>
     </div>
   );
 }

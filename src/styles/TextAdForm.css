@@ -1,0 +1,48 @@
+.card1{
+    display: flexbox;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    /* border: 2px solid black; */
+}
+.heading1{
+    display: flex;
+    font-size: large;
+}
+
+.container-box1{
+    display: flex;
+    /* border: 2px solid red; */
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.left-side1{
+    display: block;
+    flex-direction: column;
+    align-items: flex-start;
+    /* border:2px solid blue; */
+    width: 100%;
+}
+
+.left-field1{
+    margin: 1.5rem;
+}
+
+.right-side1{
+    display: block;
+    /* border:2px solid yellow; */
+    width: 100%;
+}
+
+.right-field1{
+    margin: 1rem;
+    padding: 0.5rem;
+}
+
+.btn1{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 1rem;
+}

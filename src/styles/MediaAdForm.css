@@ -1,0 +1,87 @@
+.card2{
+    display: flexbox;
+    width: 90%;
+    height: 90%;
+    margin: 2% 4%;
+    padding: 5px;
+    position: relative;
+}
+
+.heading2{
+    display: flex;
+    font-size: large;
+}
+
+.container-box2{
+    /* border: 2px solid yellow; */
+    display: block;
+}
+
+.top-grid2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    /* border: 2px solid red; */
+    justify-content: space-evenly;
+}
+.top-grid-headers2{
+    width: 80%;
+}
+
+.header2{
+    display: block;
+    /* border: 2px solid black; */
+    margin: 1rem;
+    width: 80%;
+}
+.description2{
+    /* border: 2px solid blue; */
+    width: 80%;
+    float: right;
+    margin: 1rem;
+}
+.mid-grid2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 1rem;
+    width: 100%;
+}
+.mid-fields2{
+    width: 80%;
+    margin: 1rem;
+}
+.video-field2{
+    margin: 1rem;
+}
+
+.bottom-grid2{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.bottom-grid-fields2{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 80%;
+    margin: 1rem;
+}
+
+.web-field2{
+    margin: 1rem;
+    padding: 1rem;
+    width: 100%;
+    align-items: center;
+}
+
+.btn2{
+    display: flex;
+    flex-direction: row;
+    float: right;
+    margin: 1rem;
+    padding: 1rem;
+}

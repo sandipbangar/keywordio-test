@@ -1,0 +1,9 @@
+.navbar{
+    position: fixed;
+}
+
+.menu-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
