@@ -1,0 +1,16 @@
+.donut-container {
+  border: "7px solid black";
+  display: block;
+  margin: 5px 90px;
+  height: 30vh;
+}
+.donut-ad-insights {
+  border: 1px solid lightgray;
+  height: 20%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.donut {
+  border: 1px solid lightgray;
+}

@@ -13,10 +13,10 @@
 }
 .ad-insights2{
     position: relative;
-    height: 6%;
+    height: 10%;
     display: flex;
     flex-direction: row;
-    /* border: 4px solid yellow; */
+    border: 1px solid lightgray;
 }
 .table2{
     height: 100%;
