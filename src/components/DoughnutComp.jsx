@@ -26,7 +26,9 @@ class DoughnutComp extends Component {
     return (
       <>
         <div className="donut-container">
+        <div className="paper3">
           <Typography className="donut-ad-insights">Ad Insights</Typography>
+        </div>
           <ApexCharts className="donut" options={this.state.options} series={this.state.series} type="donut" width={550} />
         </div>
       </>

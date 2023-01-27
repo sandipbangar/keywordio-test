@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Table2 from '../components/Table2';
-import { Switch } from '@mui/material';
+import { Switch, Grid } from '@mui/material';
 import DoughnutComp from '../components/DoughnutComp';
+import "../styles/RightDbStyle.css"
 
 
 export default function RightDashboard() {
@@ -13,13 +14,18 @@ export default function RightDashboard() {
 
     return (
         <>
-            <div>
+            <div className='right-db-container'>
+                <div className="switch-grid">
                 <Switch style={{ display: "flex", flexDirection: "column-reverse", justifyContent: "flex-end" }} checked={isTable} onChange={handleChange} />
+                </div>
+                <div className="component-grid">
                 {isTable ? (
                     <Table2 />
                 ) : (
                     <DoughnutComp />
                 )}
+                </div>
+                
             </div>
         </>
     )

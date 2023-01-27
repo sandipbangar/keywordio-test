@@ -1,12 +1,13 @@
 import React from 'react';
 import LeftDashboard from "./LeftDashBoard";
 import RightDashboard from "./RightDashboard";
+import "../styles/DashBoard.css"
 
 export default function DashBoard () {
   return (
-    <div item style={{display:"flex", width:"100%", height:"100%"}}>
-      <LeftDashboard/>
-      <RightDashboard/>
+    <div className='DashStyle' item>
+      <dic className='left'><LeftDashboard/></dic>
+      <div className='right'><RightDashboard/></div>
     </div>
   )
 }
