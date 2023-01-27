@@ -85,3 +85,11 @@
     margin: 1rem;
     padding: 1rem;
 }
+
+.button-grid2{
+    margin: 1rem;
+}
+.button2{
+    width: 100px;
+    /* font-weight: bold; */
+}
