@@ -1,16 +1,34 @@
-import React from "react";
-import {
-  Typography,
-  Card,
-  CardContent,
-  CardMedia,
-  Paper,
-} from "@mui/material";
+import React, { useState } from "react";
+import { Typography, Card, CardContent, CardMedia, Paper, Checkbox } from "@mui/material";
 import "../styles/CardsStyle.css";
+import TextAdForm from "./TextAdForm";
+import { Route, useNavigate, Routes } from "react-router-dom";
 
 const TextAd = () => {
+  const navigate = useNavigate();
+  const [isCheckbox1Checked, setIsCheckbox1Checked] = useState(false);
+
+  const handleCheckbox1Change = (event) => {
+    setIsCheckbox1Checked(event.target.checked);
+  };
+
+  const handleButtonClick = () => {
+    if (isCheckbox1Checked) {
+      navigate("/textadform");
+    }
+  };
+
   return (
     <Paper elevation={1} className="box">
+      {/* <Checkbox
+        name="checkbox1"
+        checked={isCheckbox1Checked}
+        onChange={handleCheckbox1Change}
+        inputProps={{ "aria-label": "controlled" }}
+      /> */}
+      <Routes>
+        <Route path="/textadform" element={<TextAdForm />} />
+      </Routes>
       <Card item className="cardcontent">
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           What is Lorem Ipsum?

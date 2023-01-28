@@ -1,5 +1,6 @@
 .navbar{
-    position: fixed;
+    position: static;
+    margin-bottom: 2rem;
 }
 
 .menu-item{

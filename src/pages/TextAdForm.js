@@ -11,9 +11,9 @@ import {
   Typography,
   Modal
 } from "@mui/material";
-import React, { useState } from "react";
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import React, { useEffect, useState } from "react";
 import "../styles/TextAdForm.css";
-import CreateAd from "./CreateAd";
 import { useNavigate } from "react-router-dom";
 
 const style = {
@@ -21,12 +21,16 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  width: 300,
+  height: 150,
   bgcolor: "background.paper",
   border: "2px solid off-white",
   opacity:"80%",
-  boxShadow: 24,
-  p: 4
+  boxShadow: 40,
+  p: 4,
+  display:"flex",
+  flexDirection:"row",
+  justifyContent:"center"
 };
 
 export default function TextAdForm() {
@@ -37,6 +41,13 @@ export default function TextAdForm() {
     setOpen(true);
     setTimeout(() => setOpen(false), 600);
   }
+  useEffect(() => {
+    if (open) {
+      setTimeout(() => {
+        navigate(-1);
+      }, 600);
+    }
+  }, [open]);
 
   return (
     <>
@@ -106,7 +117,7 @@ export default function TextAdForm() {
         </CardContent>
         <Grid item className="btn1">
           <Grid className="button-grid">
-            <Button className="button" style={{border:"1px solid lightgray", color : "black", fontWeight:"bold"}} onClick={() => navigate("/createads")}>
+            <Button className="button" style={{border:"1px solid lightgray", color : "black", fontWeight:"bold"}} onClick={() => navigate(-1)}>
               Back
             </Button>
           </Grid>
@@ -121,6 +132,9 @@ export default function TextAdForm() {
               aria-describedby="modal-modal-description"
             >
               <Box sx={style}>
+              <CheckCircleIcon fontSize="large" color="primary" style={{
+                display:"flex", flexDirection:"row", justifyContent:"center"
+              }}/>
                 <Typography id="modal-modal-title" variant="h6" component="h2">
                   Submitted
                 </Typography>

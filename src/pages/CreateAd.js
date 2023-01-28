@@ -1,4 +1,4 @@
-import { Button, Paper, Typography, CheckBox, Checkbox } from "@mui/material";
+import { Button, Paper, Typography, Checkbox } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import MediaAd from "./MediaAd";
@@ -66,8 +66,8 @@ export default function CreateAd() {
           <Route path="/textadform" element={<TextAdForm />} />
           <Route path="/mediaadform" element={<MediaAdForm />} />
         </Routes>
-        <div className="btn">
-          <Button variant="contained" onClick={handleButtonClick}>
+        <div className="btn-div">
+          <Button className="next-btn" variant="contained" onClick={handleButtonClick}>
             Next
           </Button>
         </div>

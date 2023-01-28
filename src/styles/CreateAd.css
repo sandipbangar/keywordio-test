@@ -37,10 +37,18 @@
   width: 35%;
 }
 
-.btn{
+.btn-div{
   /* border: 5px solid black; */
   position: relative;
   display: flex;
+  height: 15%;
   flex-direction: row;
   justify-content: flex-end;
+  align-items: center;
+  margin-right: 2rem;
+  /* padding: 1rem; */
+}
+.next-btn{
+  width: 100px;
+  height: 2.5rem;
 }
