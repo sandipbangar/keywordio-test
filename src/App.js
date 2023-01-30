@@ -5,7 +5,6 @@ import Dashboard from "./pages/Dashboard";
 import { Card } from "@mui/material";
 import TextAdForm from "./pages/TextAdForm";
 import MediaAdForm from "./pages/MediaAdForm";
-import Submitted from "./pages/Submitted";
 
 function App() {
   return (
@@ -18,7 +17,6 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/textadform" element={<TextAdForm />} />
           <Route path="/mediaadform" element={<MediaAdForm />} />
-          <Route path="/submitted" element={<Submitted />} />
         </Routes>
         <Card />
       </div>
