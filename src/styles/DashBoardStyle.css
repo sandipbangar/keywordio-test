@@ -1,0 +1,23 @@
+.DashBoardStyle {
+  display: flex;
+  /* flex-direction: row; */
+  position: relative;
+  /* height: 70vh; */
+  /* width: 80%; */
+  justify-content: center;
+  margin: 1rem;
+  /* align-items: center; */
+}
+
+.left {
+  position: relative;
+  /* margin: 2rem; */
+  padding: 1rem;
+  /* width: 60%; */
+}
+.right {
+  position: relative;
+  /* margin: 2rem; */
+  padding: 1rem;
+  /* width: 60%; */
+}

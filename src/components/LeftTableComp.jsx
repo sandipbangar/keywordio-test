@@ -1,5 +1,6 @@
 import * as React from "react";
 import PropTypes from "prop-types";
+import { alpha } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -8,29 +9,30 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableSortLabel from "@mui/material/TableSortLabel";
+import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import { visuallyHidden } from "@mui/utils";
-import "../styles/ReusableTableStyle.css"
 
-function createData(name, clicks, cost, conversion, revenue) {
+function createData(name, calories, fat, carbs, protein) {
   return {
     name,
-    clicks,
-    cost,
-    conversion,
-    revenue,
+    calories,
+    fat,
+    carbs,
+    protein
   };
 }
 
 const rows = [
-  createData("Cosmetics", 712, "4272", 8, "16568"),
-  createData("Serums", 3961, "27331", 115, "362526"),
-  createData("Facewash", 9462, "76831", 123, "226800"),
-  createData("Shampoos", 439, "2151", 5, "11029"),
-  createData("Conditioners", 1680, "3864", 49, "175245"),
-  createData("Facewash 2", 4978, "29370", 189, "623106"),
-  createData("Total", 26510, "143819", 489, "1573563"),
+  createData("Cupcake", 305, 3.7, 67, 4.3),
+  createData("Donut", 452, 25.0, 51, 4.9),
+  createData("Eclair", 262, 16.0, 24, 6.0),
+  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
+  createData("Gingerbread", 356, 16.0, 49, 3.9),
+  createData("Honeycomb", 408, 3.2, 87, 6.5),
+  createData("Ice cream sandwich", 237, 9.0, 37, 4.3)
 ];
 
 function descendingComparator(a, b, orderBy) {
@@ -48,7 +50,6 @@ function getComparator(order, orderBy) {
     ? (a, b) => descendingComparator(a, b, orderBy)
     : (a, b) => -descendingComparator(a, b, orderBy);
 }
-
 function stableSort(array, comparator) {
   const stabilizedThis = array.map((el, index) => [el, index]);
   stabilizedThis.sort((a, b) => {
@@ -66,32 +67,32 @@ const headCells = [
     id: "name",
     numeric: false,
     disablePadding: true,
-    label: "Campaigns",
+    label: "Dessert (100g serving)"
   },
   {
-    id: "clicks",
+    id: "calories",
     numeric: true,
     disablePadding: false,
-    label: "Clicks",
+    label: "Calories"
   },
   {
-    id: "cost",
+    id: "fat",
     numeric: true,
     disablePadding: false,
-    label: "Cost (USD)",
+    label: "Fat (g)"
   },
   {
-    id: "conversion",
+    id: "carbs",
     numeric: true,
     disablePadding: false,
-    label: "Conversions",
+    label: "Carbs (g)"
   },
   {
-    id: "revenue",
+    id: "protein",
     numeric: true,
     disablePadding: false,
-    label: "Revenue (USD)",
-  },
+    label: "Protein (g)"
+  }
 ];
 
 function EnhancedTableHead(props) {
@@ -130,15 +131,50 @@ function EnhancedTableHead(props) {
 }
 
 EnhancedTableHead.propTypes = {
+  numSelected: PropTypes.number.isRequired,
   onRequestSort: PropTypes.func.isRequired,
-  onSelectAllClick: PropTypes.func.isRequired,
   order: PropTypes.oneOf(["asc", "desc"]).isRequired,
   orderBy: PropTypes.string.isRequired,
+  rowCount: PropTypes.number.isRequired
 };
 
-export default function ReusableTable() {
+function EnhancedTableToolbar(props) {
+  const { numSelected } = props;
+
+  return (
+    <Toolbar
+      sx={{
+        pl: { sm: 2 },
+        pr: { xs: 1, sm: 1 },
+        ...(numSelected > 0 && {
+          bgcolor: (theme) =>
+            alpha(
+              theme.palette.primary.main,
+              theme.palette.action.activatedOpacity
+            )
+        })
+      }}
+    >
+      <Typography
+        sx={{ flex: "1 1 100%" }}
+        variant="h6"
+        id="tableTitle"
+        component="div"
+      >
+        Ad Insights
+      </Typography>
+      <HelpOutlineIcon />
+    </Toolbar>
+  );
+}
+
+EnhancedTableToolbar.propTypes = {
+  numSelected: PropTypes.number.isRequired
+};
+
+export default function RightTableComp() {
   const [order, setOrder] = React.useState("asc");
-  const [orderBy, setOrderBy] = React.useState("clicks");
+  const [orderBy, setOrderBy] = React.useState("calories");
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === "asc";
@@ -147,51 +183,44 @@ export default function ReusableTable() {
   };
 
   return (
-    <Box className="box-container" style={{marginRight:"1rem"}}>
-      <div className="paper">
-        <Typography className="ad-insights">Ad Insights</Typography>
-        <TableContainer className="table-container">
-          <Table className="table" aria-labelledby="tableTitle">
+    < >
+      <Paper sx={{ width: '100%', mb: 2 }}>
+        <EnhancedTableToolbar />
+        <TableContainer>
+          <Table
+            aria-labelledby="tableTitle"
+            size="small"
+          >
             <EnhancedTableHead
-              className="table-head"
               order={order}
               orderBy={orderBy}
               onRequestSort={handleRequestSort}
               rowCount={rows.length}
             />
-            <TableBody className="table-body">
-              {stableSort(rows, getComparator(order, orderBy))
-                .map((row, index) => {
-                  const labelId = `enhanced-table-checkbox-${index}`;
-
+            <TableBody>
+              {stableSort(rows, getComparator(order, orderBy)).map(
+                (row, index) => {
                   return (
                     <TableRow
-                      className="table-row"
                       hover
-                      role="checkbox"
                       tabIndex={-1}
                       key={row.name}
                     >
-                      <TableCell
-                        className="table-cell"
-                        component="th"
-                        id={labelId}
-                        scope="row"
-                        padding="100px"
-                      >
+                      <TableCell component="th" scope="row" padding="none">
                         {row.name}
                       </TableCell>
-                      <TableCell align="right">{row.clicks}</TableCell>
-                      <TableCell align="right">{row.cost}</TableCell>
-                      <TableCell align="right">{row.conversion}</TableCell>
-                      <TableCell align="right">{row.revenue}</TableCell>
+                      <TableCell align="right">{row.calories}</TableCell>
+                      <TableCell align="right">{row.fat}</TableCell>
+                      <TableCell align="right">{row.carbs}</TableCell>
+                      <TableCell align="right">{row.protein}</TableCell>
                     </TableRow>
                   );
-                })}
+                }
+              )}
             </TableBody>
           </Table>
         </TableContainer>
-      </div>
-    </Box>
+      </Paper>
+    </>
   );
 }

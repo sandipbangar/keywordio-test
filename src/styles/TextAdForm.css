@@ -1,9 +1,9 @@
-.card1{
+/* .card1{
     display: flexbox;
     width: 100%;
     height: 100%;
     position: absolute;
-    /* border: 2px solid black; */
+    border: 2px solid black;
 }
 .heading1{
     display: flex;
@@ -12,7 +12,7 @@
 
 .container-box1{
     display: flex;
-    /* border: 2px solid red; */
+    border: 2px solid red;
     width: 100%;
     justify-content: space-evenly;
 }
@@ -21,7 +21,7 @@
     display: block;
     flex-direction: column;
     align-items: flex-start;
-    /* border:2px solid blue; */
+    border:2px solid blue;
     width: 100%;
 }
 
@@ -31,7 +31,7 @@
 
 .right-side1{
     display: block;
-    /* border:2px solid yellow; */
+    border:2px solid yellow;
     width: 100%;
 }
 
@@ -51,5 +51,5 @@
 }
 .button{
     width: 100px;
-    /* font-weight: bold; */
-}
+    font-weight: bold;
+} */

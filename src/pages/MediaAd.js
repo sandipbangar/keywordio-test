@@ -1,28 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Typography,
   Card,
   Paper,
   CardContent,
   CardMedia,
-  Checkbox,
 } from "@mui/material";
 import "../styles/CardsStyle.css";
-import { Route, useNavigate, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import MediaAdForm from "./MediaAdForm";
 
 const MediaAd = () => {
-  const navigate = useNavigate();
-  const [isCheckbox2Checked, setIsCheckbox2Checked] = useState(false);
-
-  const handleCheckbox2Change = (event) => {
-    setIsCheckbox2Checked(event.target.checked);
-  };
-  const handleButtonClick = () => {
-    if (isCheckbox2Checked) {
-      navigate("/mediaadform");
-    }
-  };
   return (
     <Paper elevation={1} className="box">
       {/* <Checkbox
@@ -32,8 +20,8 @@ const MediaAd = () => {
         inputProps={{ "aria-label": "controlled" }}
       /> */}
       <Routes>
-          <Route path="/mediaadform" element={<MediaAdForm />} />
-        </Routes>
+        <Route path="/mediaadform" element={<MediaAdForm />} />
+      </Routes>
       <Card className="cardcontent">
         <CardMedia
           className="media-img"

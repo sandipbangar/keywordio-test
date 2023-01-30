@@ -1,5 +1,6 @@
 import * as React from "react";
 import PropTypes from "prop-types";
+import { alpha } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -8,26 +9,27 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableSortLabel from "@mui/material/TableSortLabel";
+import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import { visuallyHidden } from "@mui/utils";
-import "../styles/Table2Style.css"
 
-function createData(name, clicks, cost, conversion, revenue) {
+function createData(name, calories, fat, carbs, protein) {
   return {
     name,
-    clicks,
-    cost,
-    conversion,
-    revenue,
+    calories,
+    fat,
+    carbs,
+    protein
   };
 }
 
 const rows = [
-  createData("Male", 348, "12528", 42, "62118"),
-  createData("Female", 692, "24912", 35, "5175"),
-  createData("Unknown", 105, "3934", 3, "4489"),
-  createData("Total", 1145, "41383", 80, "71782"),
+  createData("Cupcake", 305, 3.7, 67, 4.3),
+  createData("Donut", 452, 25.0, 51, 4.9),
+  createData("Eclair", 262, 16.0, 24, 6.0),
+  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
 ];
 
 function descendingComparator(a, b, orderBy) {
@@ -45,7 +47,6 @@ function getComparator(order, orderBy) {
     ? (a, b) => descendingComparator(a, b, orderBy)
     : (a, b) => -descendingComparator(a, b, orderBy);
 }
-
 function stableSort(array, comparator) {
   const stabilizedThis = array.map((el, index) => [el, index]);
   stabilizedThis.sort((a, b) => {
@@ -63,32 +64,32 @@ const headCells = [
     id: "name",
     numeric: false,
     disablePadding: true,
-    label: "Group",
+    label: "Dessert (100g serving)"
   },
   {
-    id: "clicks",
+    id: "calories",
     numeric: true,
     disablePadding: false,
-    label: "Clicks",
+    label: "Calories"
   },
   {
-    id: "cost",
+    id: "fat",
     numeric: true,
     disablePadding: false,
-    label: "Cost (USD)",
+    label: "Fat (g)"
   },
   {
-    id: "conversion",
+    id: "carbs",
     numeric: true,
     disablePadding: false,
-    label: "Conversions",
+    label: "Carbs (g)"
   },
   {
-    id: "revenue",
+    id: "protein",
     numeric: true,
     disablePadding: false,
-    label: "Revenue (USD)",
-  },
+    label: "Protein (g)"
+  }
 ];
 
 function EnhancedTableHead(props) {
@@ -127,15 +128,50 @@ function EnhancedTableHead(props) {
 }
 
 EnhancedTableHead.propTypes = {
+  numSelected: PropTypes.number.isRequired,
   onRequestSort: PropTypes.func.isRequired,
-  onSelectAllClick: PropTypes.func.isRequired,
   order: PropTypes.oneOf(["asc", "desc"]).isRequired,
   orderBy: PropTypes.string.isRequired,
+  rowCount: PropTypes.number.isRequired
 };
 
-export default function Table2() {
+function EnhancedTableToolbar(props) {
+  const { numSelected } = props;
+
+  return (
+    <Toolbar
+      sx={{
+        pl: { sm: 2 },
+        pr: { xs: 1, sm: 1 },
+        ...(numSelected > 0 && {
+          bgcolor: (theme) =>
+            alpha(
+              theme.palette.primary.main,
+              theme.palette.action.activatedOpacity
+            )
+        })
+      }}
+    >
+      <Typography
+        sx={{ flex: "1 1 100%" }}
+        variant="h6"
+        id="tableTitle"
+        component="div"
+      >
+        Ad Insights
+      </Typography>
+      <HelpOutlineIcon />
+    </Toolbar>
+  );
+}
+
+EnhancedTableToolbar.propTypes = {
+  numSelected: PropTypes.number.isRequired
+};
+
+export default function RightTableComp() {
   const [order, setOrder] = React.useState("asc");
-  const [orderBy, setOrderBy] = React.useState("clicks");
+  const [orderBy, setOrderBy] = React.useState("calories");
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === "asc";
@@ -144,51 +180,44 @@ export default function Table2() {
   };
 
   return (
-    <Box className="box-container2">
-      <div className="paper2">
-        <Typography className="ad-insights2">Ad Insights</Typography>
-        <TableContainer className="table-container2">
-          <Table className="table2" aria-labelledby="tableTitle">
+    <>
+      <Paper sx={{ width: '100%', mb: 2 }}>
+        <EnhancedTableToolbar />
+        <TableContainer>
+          <Table
+            aria-labelledby="tableTitle"
+            size="small"
+          >
             <EnhancedTableHead
-              className="table-head2"
               order={order}
               orderBy={orderBy}
               onRequestSort={handleRequestSort}
               rowCount={rows.length}
             />
-            <TableBody className="table-body2">
-              {stableSort(rows, getComparator(order, orderBy))
-                .map((row, index) => {
-                  const labelId = `enhanced-table-checkbox-${index}`;
-
+            <TableBody>
+              {stableSort(rows, getComparator(order, orderBy)).map(
+                (row, index) => {
                   return (
                     <TableRow
-                      className="table-row2"
                       hover
-                      role="checkbox"
                       tabIndex={-1}
                       key={row.name}
                     >
-                      <TableCell
-                        className="table-cell2"
-                        component="th"
-                        id={labelId}
-                        scope="row"
-                        padding="none"
-                      >
+                      <TableCell component="th" scope="row" padding="none">
                         {row.name}
                       </TableCell>
-                      <TableCell align="right">{row.clicks}</TableCell>
-                      <TableCell align="right">{row.cost}</TableCell>
-                      <TableCell align="right">{row.conversion}</TableCell>
-                      <TableCell align="right">{row.revenue}</TableCell>
+                      <TableCell align="right">{row.calories}</TableCell>
+                      <TableCell align="right">{row.fat}</TableCell>
+                      <TableCell align="right">{row.carbs}</TableCell>
+                      <TableCell align="right">{row.protein}</TableCell>
                     </TableRow>
                   );
-                })}
+                }
+              )}
             </TableBody>
           </Table>
         </TableContainer>
-      </div>
-    </Box>
+      </Paper>
+    </>
   );
 }

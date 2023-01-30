@@ -1,13 +1,16 @@
-import { Container } from '@mui/system';
+import { Paper } from '@mui/material';
 import React from 'react';
-import Table1 from "../components/Table1"
+import LeftTableComp from "../components/LeftTableComp"
+import "../styles/LeftDashboardStyle.css"
 
-export default function DashBoard () {
+export default function DashBoard() {
   return (
     <>
-    <div>
-    <Table1/>
-    </div>
+      <Paper sx={{ width: '100%', mb: 2 }}>
+        <div className='left-db-container'>
+          <LeftTableComp />
+        </div>
+      </Paper>
     </>
   )
 }
