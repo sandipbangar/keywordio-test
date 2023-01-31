@@ -9,9 +9,10 @@ import {
   Button,
   Box,
   Typography,
-  Modal
+  Modal,
+  form,
 } from "@mui/material";
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import React, { useEffect, useState } from "react";
 import "../styles/TextAdForm.css";
 import { useNavigate } from "react-router-dom";
@@ -25,22 +26,23 @@ const style = {
   height: 150,
   bgcolor: "background.paper",
   border: "2px solid off-white",
-  opacity:"80%",
+  opacity: "80%",
   boxShadow: 40,
   p: 4,
-  display:"flex",
-  flexDirection:"row",
-  justifyContent:"center"
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "center",
 };
 
 export default function TextAdForm() {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+  const [name, setName]= useState("");
 
   const handleOpen = () => {
     setOpen(true);
     setTimeout(() => setOpen(false), 600);
-  }
+  };
   useEffect(() => {
     if (open) {
       setTimeout(() => {
@@ -57,6 +59,17 @@ export default function TextAdForm() {
           <Grid className="container-box1" spacing={1}>
             <Grid className="left-side1" xs={6} item>
               <Grid className="left-field1" xs={6}>
+                <form>
+                  <label style={{display:"block"}}>
+                    Enter your name:
+                    <input
+                      type="text"
+                      value={name}
+                      placeholder="abcd"
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                  </label>
+                </form>
                 <TextField
                   label="Heading 01"
                   placeholder="Add a heading that would make users interested"
@@ -117,7 +130,15 @@ export default function TextAdForm() {
         </CardContent>
         <Grid item className="btn1">
           <Grid className="button-grid">
-            <Button className="button" style={{border:"1px solid lightgray", color : "black", fontWeight:"bold"}} onClick={() => navigate(-1)}>
+            <Button
+              className="button"
+              style={{
+                border: "1px solid lightgray",
+                color: "black",
+                fontWeight: "bold",
+              }}
+              onClick={() => navigate(-1)}
+            >
               Back
             </Button>
           </Grid>
@@ -132,9 +153,15 @@ export default function TextAdForm() {
               aria-describedby="modal-modal-description"
             >
               <Box sx={style}>
-              <CheckCircleIcon fontSize="large" color="primary" style={{
-                display:"flex", flexDirection:"row", justifyContent:"center"
-              }}/>
+                <CheckCircleIcon
+                  fontSize="large"
+                  color="primary"
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "center",
+                  }}
+                />
                 <Typography id="modal-modal-title" variant="h6" component="h2">
                   Submitted
                 </Typography>

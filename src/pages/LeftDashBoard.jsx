@@ -6,7 +6,7 @@ import "../styles/LeftDashboardStyle.css"
 export default function DashBoard() {
   return (
     <>
-      <Paper sx={{ width: '100%', mb: 2 }}>
+      <Paper>
         <div className='left-db-container'>
           <LeftTableComp />
         </div>

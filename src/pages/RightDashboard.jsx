@@ -14,7 +14,7 @@ export default function RightDashboard() {
 
     return (
         <>
-        <Paper sx={{ width: '100%', mb: 2 }}>
+        <Paper>
             <div className='right-db-container'>
                 {/* <div className="switch-grid">
                     <Switch

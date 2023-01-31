@@ -3,7 +3,7 @@ import { Box } from "@mui/system";
 import React from "react";
 import MediaAd from "./MediaAd";
 import TextAd from "./TextAd";
-import "../styles/CreateAd.css";
+import "../styles/CreateAdStyle.css";
 import TextAdForm from "./TextAdForm";
 import MediaAdForm from "./MediaAdForm";
 import { useState } from "react";
@@ -32,10 +32,8 @@ export default function CreateAd() {
 
   return (
     <>
-      <Paper variant="outlined" className="container" fullWidth>
-        <div className="create-ad">
-          <Typography>Create Ads</Typography>
-        </div>
+      <Paper className="createad-container" fullWidth>
+        <div className="create-ad">Create Ads</div>
         <div item className="card-container">
           <div item className="cards">
             <Checkbox
@@ -56,20 +54,18 @@ export default function CreateAd() {
             <MediaAd />
           </div>
         </div>
-        {/* <div>
-          <TextAdForm/>
-        </div> */}
-        {/* <div>
-        <MediaAdForm/>
-        </div> */}
-        <Routes>
-          <Route path="/textadform" element={<TextAdForm />} />
-          <Route path="/mediaadform" element={<MediaAdForm />} />
-        </Routes>
         <div className="btn-div">
-          <Button className="next-btn" variant="contained" onClick={handleButtonClick}>
+          <Button
+            className="next-btn"
+            variant="contained"
+            onClick={handleButtonClick}
+          >
             Next
           </Button>
+          <Routes>
+            <Route path="/textadform" element={<TextAdForm />} />
+            <Route path="/mediaadform" element={<MediaAdForm />} />
+          </Routes>
         </div>
       </Paper>
     </>
