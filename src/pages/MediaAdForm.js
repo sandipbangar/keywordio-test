@@ -56,59 +56,59 @@ export default function MediaAdForm () {
         <div className="heading2">Create Text and Media</div>
         <CardContent>
           <Grid className="container-box2" spacing={1}>
-            <Grid xs={12} item className="top-grid2">
-              <Grid className="top-grid-headers2" xs={12}>
-                <Grid className="header2" xs={8}>
+            <Grid item className="top-grid2" spacing={1}>
+              <Grid className="top-grid-headers2" xs={6}>
+                <Grid className="header2" xs={6}>
+                  <h1 className="labels-media">Heading 01</h1>
                   <TextField
-                    label="Heading 01"
                     placeholder="Add a heading that would make users interested"
                     variant="outlined"
                     fullWidth
                   />
                 </Grid>
-                <Grid className="header2" xs={8}>
+                <Grid className="header2" xs={6}>
+                <h1 className="labels-media">Heading 02</h1>
                   <TextField
-                    label="Heading 02"
                     placeholder="Add a heading that would make users interested"
                     variant="outlined"
                     fullWidth
                   />
                 </Grid>
               </Grid>
-              <Grid className="description2" xs={8}>
+              <Grid className="description2" xs={6}>
+              <h1 className="labels-media">Description 01</h1>
                 <TextField
-                  label="Description 01"
                   placeholder="Add primary text to help users understand more about your products, services or offers"
                   variant="outlined"
                   fullWidth
                   id="description"
                   multiline
-                  rows={4}
+                  rows={5.4}
                   maxWidth
                 />
               </Grid>
             </Grid>
 
-            <Grid className="mid-grid2" item xs={12}>
+            <Grid className="middle-grid" item xs={12}>
               <Grid className="mid-fields2" xs={4}>
+              <h1 className="labels-media">Landscape Marketing Image (1.9:1)</h1>
                 <TextField
-                  label="Landscape Marketing Image (1.9:1)"
                   placeholder="Add the URL of the image you want to use for the ad"
                   variant="outlined"
                   fullWidth
                 />
               </Grid>
               <Grid className="mid-fields2" xs={4}>
+              <h1 className="labels-media">Potrait Marketing Image (4:5)</h1>
                 <TextField
-                  label="Potrait Marketing Image (4:5)"
                   placeholder="Add the URL of the image you want to use for the ad"
                   variant="outlined"
                   fullWidth
                 />
               </Grid>
               <Grid className="mid-fields2" xs={4}>
+              <h1 className="labels-media">Square Marketing Image (1:1)</h1>
                 <TextField
-                  label="Square Marketing Image (1:1)"
                   placeholder="Add the URL of the image you want to use for the ad"
                   variant="outlined"
                   fullWidth
@@ -117,8 +117,8 @@ export default function MediaAdForm () {
             </Grid>
 
             <Grid xs={12} className="video-field2">
+            <h1 className="labels-media">Video URL</h1>
               <TextField
-                label="Video URL"
                 placeholder="Add the URL of the video you want to use for the ad"
                 variant="outlined"
                 fullWidth
@@ -126,8 +126,8 @@ export default function MediaAdForm () {
             </Grid>
             <Grid item className="bottom-grid2" xs={12}>
               <Grid className="bottom-grid-fields2" xs={6}>
+              <h1 className="labels-media">Business Name</h1>
                 <TextField
-                  label="Business Name"
                   placeholder="Add your business name"
                   variant="outlined"
                   fullWidth
@@ -135,30 +135,25 @@ export default function MediaAdForm () {
               </Grid>
               <Grid className="bottom-grid-fields2" xs={6}>
                 <FormControl fullWidth>
-                  <InputLabel id="demo-simple-select-label">
-                    Button Label
-                  </InputLabel>
+                <h1 className="labels-media">ButtonLabel</h1>
                   <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
-                    label="ButtonLabel"
                     placeholder="Select a label that best suits your ad"
                   />
                 </FormControl>
               </Grid>
             </Grid>
             <Grid className="web-field2" xs={12} item>
+            <h1 className="labels-media">Website URL</h1>
             <TextField
-              label="Website URL"
               placeholder="Add a URL of the landing page you want to redirect users to"
               variant="outlined"
               fullWidth
             />
           </Grid>
           </Grid>
-
-        </CardContent>
-        <Grid item className="btn2">
+          <Grid item className="btn2">
           <Grid className="button-grid2">
             <Button className="button2" style={{border:"1px solid lightgray", color : "black", fontWeight:"bold"}} onClick={() => navigate(-1)}>
               Back
@@ -185,6 +180,7 @@ export default function MediaAdForm () {
             </Modal>
           </Grid>
         </Grid>
+        </CardContent>
       </Card>
     </>
   );

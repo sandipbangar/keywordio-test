@@ -11,6 +11,7 @@ import {
   Typography,
   Modal,
   form,
+  Paper
 } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import React, { useEffect, useState } from "react";
@@ -22,11 +23,12 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 300,
+  width: 400,
   height: 150,
   bgcolor: "background.paper",
+  background: "white",
+  opacity: 85,
   border: "2px solid off-white",
-  opacity: "80%",
   boxShadow: 40,
   p: 4,
   display: "flex",
@@ -53,41 +55,30 @@ export default function TextAdForm() {
 
   return (
     <>
-      <Card className="card1">
+      <Paper className="card1" fullWidth>
         <div className="heading1">Create Text and Media</div>
         <CardContent>
           <Grid className="container-box1" spacing={1}>
             <Grid className="left-side1" xs={6} item>
               <Grid className="left-field1" xs={6}>
-                <form>
-                  <label style={{display:"block"}}>
-                    Enter your name:
-                    <input
-                      type="text"
-                      value={name}
-                      placeholder="abcd"
-                      onChange={(e) => setName(e.target.value)}
-                    />
-                  </label>
-                </form>
+                <h1 className="labels">Heading 01</h1>
                 <TextField
-                  label="Heading 01"
+                  placeholder="Add a heading that would make users interested"
+                  variant="outlined"
+                  fullWidth
+                ></TextField>
+              </Grid>
+              <Grid className="left-field1" xs={6}>
+              <h1 className="labels">Heading 02</h1>
+                <TextField
                   placeholder="Add a heading that would make users interested"
                   variant="outlined"
                   fullWidth
                 />
               </Grid>
               <Grid className="left-field1" xs={6}>
+              <h1 className="labels">Business Name</h1>
                 <TextField
-                  label="Heading 02"
-                  placeholder="Add a heading that would make users interested"
-                  variant="outlined"
-                  fullWidth
-                />
-              </Grid>
-              <Grid className="left-field1" xs={6}>
-                <TextField
-                  label="Business Name"
                   placeholder="Add your business name"
                   variant="outlined"
                   fullWidth
@@ -96,23 +87,22 @@ export default function TextAdForm() {
             </Grid>
             <Grid className="right-side1" xs={12} sm={6} item>
               <Grid className="right-field1">
+                <h1 className="labels">Description 01</h1>
                 <TextField
                   fullWidth
                   id="description"
-                  label="Description 01"
                   multiline
-                  rows={4}
+                  rows={5.4}
                   placeholder="Add primary text to help users understand more about your products, services or offers"
-                  maxWidth
+                  
                 />
               </Grid>
               <Grid className="right-field1">
                 <FormControl fullWidth>
-                  <InputLabel id="simple-select-label">Button Lable</InputLabel>
+                  <h1 className="labels">Button Label</h1>
                   <Select
                     labelId="simple-select-label"
                     id="simple-select"
-                    label="Button Label"
                     placeholder="Select a label that best suits your ad"
                   />
                 </FormControl>
@@ -120,8 +110,8 @@ export default function TextAdForm() {
             </Grid>
           </Grid>
           <Grid item className="web-field1" xs={12} sm={6}>
+            <h1 className="labels">Website URL</h1>
             <TextField
-              label="Website URL"
               placeholder="Add a URL of the landing page you want to redirect users to"
               variant="outlined"
               fullWidth
@@ -158,18 +148,19 @@ export default function TextAdForm() {
                   color="primary"
                   style={{
                     display: "flex",
-                    flexDirection: "row",
+                    flexDirection: "column",
                     justifyContent: "center",
+                    alignItems:"center"
                   }}
                 />
-                <Typography id="modal-modal-title" variant="h6" component="h2">
+                <h1 id="modal-modal-title" variant="h6" component="h2">
                   Submitted
-                </Typography>
+                </h1>
               </Box>
             </Modal>
           </Grid>
         </Grid>
-      </Card>
+      </Paper>
     </>
   );
 }
