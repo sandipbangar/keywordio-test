@@ -1,7 +1,21 @@
-.left-db-container{
-    /* border: 2px solid black; */
-    /* display: flex;
-    flex-direction: column-reverse;
-    justify-content: space-around; */
-    height: 44vh;
+.left-db-container {
+  height: 50vh;
+  width: 47vw;
+  border-radius: 5px;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
+    rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+}
+
+.header-left-dash {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 12%;
+  padding: 0 1rem;
+}
+
+.header-ad {
+  font-size: 18px;
+  font-weight: 400;
 }

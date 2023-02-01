@@ -1,6 +1,5 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-import { alpha } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -9,27 +8,24 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableSortLabel from "@mui/material/TableSortLabel";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import { visuallyHidden } from "@mui/utils";
+import "../styles/RightTableStyle.css"
 
-function createData(name, calories, fat, carbs, protein) {
+function createData(group, clicks, cost, conversions, revenue) {
   return {
-    name,
-    calories,
-    fat,
-    carbs,
-    protein
+    group,
+    clicks,
+    cost,
+    conversions,
+    revenue
   };
 }
 
 const rows = [
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-  createData("Donut", 452, 25.0, 51, 4.9),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
+  createData("Male", 348, "USD 12,528", 42, "USD 62,118"),
+  createData("Female", 692, "USD 24,912", 35, "USD 5,175"),
+  createData("Unknown", 105, "USD 3,943", 3, "USD 4,489"),
+  createData("Total", "1,145", "USD 41,383", 80, "USD 71,782"),
 ];
 
 function descendingComparator(a, b, orderBy) {
@@ -61,34 +57,34 @@ function stableSort(array, comparator) {
 
 const headCells = [
   {
-    id: "name",
+    id: "group",
     numeric: false,
     disablePadding: true,
-    label: "Dessert (100g serving)"
+    label: "Group"
   },
   {
-    id: "calories",
+    id: "clicks",
     numeric: true,
     disablePadding: false,
-    label: "Calories"
+    label: "Clicks"
   },
   {
-    id: "fat",
-    numeric: true,
+    id: "cost",
+    numeric: false,
     disablePadding: false,
-    label: "Fat (g)"
+    label: "Cost"
   },
   {
-    id: "carbs",
+    id: "conversions",
     numeric: true,
     disablePadding: false,
-    label: "Carbs (g)"
+    label: "Conversion"
   },
   {
-    id: "protein",
-    numeric: true,
+    id: "revenue",
+    numeric: false,
     disablePadding: false,
-    label: "Protein (g)"
+    label: "Revenue"
   }
 ];
 
@@ -135,43 +131,10 @@ EnhancedTableHead.propTypes = {
   rowCount: PropTypes.number.isRequired
 };
 
-function EnhancedTableToolbar(props) {
-  const { numSelected } = props;
-
-  return (
-    <Toolbar
-      sx={{
-        pl: { sm: 2 },
-        pr: { xs: 1, sm: 1 },
-        ...(numSelected > 0 && {
-          bgcolor: (theme) =>
-            alpha(
-              theme.palette.primary.main,
-              theme.palette.action.activatedOpacity
-            )
-        })
-      }}
-    >
-      <Typography
-        sx={{ flex: "1 1 100%" }}
-        variant="h6"
-        id="tableTitle"
-        component="div"
-      >
-        Ad Insights
-      </Typography>
-      <HelpOutlineIcon />
-    </Toolbar>
-  );
-}
-
-EnhancedTableToolbar.propTypes = {
-  numSelected: PropTypes.number.isRequired
-};
 
 export default function RightTableComp() {
   const [order, setOrder] = React.useState("asc");
-  const [orderBy, setOrderBy] = React.useState("calories");
+  const [orderBy, setOrderBy] = React.useState("clicks");
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === "asc";
@@ -181,10 +144,10 @@ export default function RightTableComp() {
 
   return (
     <>
-      <Paper sx={{ width: '100%', mb: 2 }}>
-        <EnhancedTableToolbar />
-        <TableContainer>
+      <div className="box-container2" sx={{ width: '100%', mb: 2 }}>
+        <TableContainer className="table-container2">
           <Table
+            className="table2"
             aria-labelledby="tableTitle"
             size="small"
           >
@@ -194,22 +157,23 @@ export default function RightTableComp() {
               onRequestSort={handleRequestSort}
               rowCount={rows.length}
             />
-            <TableBody>
+            <TableBody className="table-body2">
               {stableSort(rows, getComparator(order, orderBy)).map(
                 (row, index) => {
                   return (
                     <TableRow
+                      className="table-row2"
                       hover
                       tabIndex={-1}
-                      key={row.name}
+                      key={row.group}
                     >
                       <TableCell component="th" scope="row" padding="none">
-                        {row.name}
+                        {row.group}
                       </TableCell>
-                      <TableCell align="right">{row.calories}</TableCell>
-                      <TableCell align="right">{row.fat}</TableCell>
-                      <TableCell align="right">{row.carbs}</TableCell>
-                      <TableCell align="right">{row.protein}</TableCell>
+                      <TableCell align="right">{row.clicks}</TableCell>
+                      <TableCell align="right">{row.cost}</TableCell>
+                      <TableCell align="right">{row.conversions}</TableCell>
+                      <TableCell align="right">{row.revenue}</TableCell>
                     </TableRow>
                   );
                 }
@@ -217,7 +181,7 @@ export default function RightTableComp() {
             </TableBody>
           </Table>
         </TableContainer>
-      </Paper>
+      </div>
     </>
   );
 }

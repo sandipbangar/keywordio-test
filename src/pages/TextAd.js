@@ -1,29 +1,10 @@
-import React, { useState } from "react";
-import {
-  Typography,
-  Card,
-  CardContent,
-  CardMedia,
-  Paper,
-  Checkbox,
-} from "@mui/material";
+import React from "react";
+import { Typography } from "@mui/material";
 import "../styles/CardsStyle.css";
 import TextAdForm from "./TextAdForm";
-import { Route, useNavigate, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 const TextAd = () => {
-  const navigate = useNavigate();
-  const [isCheckbox1Checked, setIsCheckbox1Checked] = useState(false);
-
-  const handleCheckbox1Change = (event) => {
-    setIsCheckbox1Checked(event.target.checked);
-  };
-
-  const handleButtonClick = () => {
-    if (isCheckbox1Checked) {
-      navigate("/textadform");
-    }
-  };
 
   return (
     <div className="box">
@@ -50,10 +31,10 @@ const TextAd = () => {
         <br />
         {'"a benevolent smile"'}
         <div className="card-text">
-        <div className="text" color="text.secondary">
-          Create
-        </div>
-        <h3 className="text-ad">Text Ad</h3>
+          <div className="text" color="text.secondary">
+            Create
+          </div>
+          <h3 className="text-ad">Text Ad</h3>
         </div>
       </div>
     </div>

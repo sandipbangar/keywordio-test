@@ -12,7 +12,7 @@ class DoughnutComp extends Component {
         chart: {
           type: 'donut',
         },
-        labels: ['Male', 'Female', 'Unknown'],
+        labels: [' 40% Male', '35% Female', '25% Unknown'],
         legend: {
           show: true,
           position: 'right',
@@ -26,10 +26,7 @@ class DoughnutComp extends Component {
     return (
       <>
         <div className="donut-container">
-        <div className="paper3">
-          <Typography className="donut-ad-insights">Ad Insights</Typography>
-        </div>
-          <ApexCharts className="donut" options={this.state.options} series={this.state.series} type="donut" width={550} />
+          <ApexCharts className="donut" options={this.state.options} series={this.state.series} type="donut" width={410} />
         </div>
       </>
 

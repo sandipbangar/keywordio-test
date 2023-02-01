@@ -1,16 +1,12 @@
 import {
-  Card,
   CardContent,
   Grid,
   Select,
   TextField,
-  InputLabel,
   FormControl,
   Button,
   Box,
-  Typography,
   Modal,
-  form,
   Paper
 } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
@@ -39,7 +35,6 @@ const style = {
 export default function TextAdForm() {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
-  const [name, setName]= useState("");
 
   const handleOpen = () => {
     setOpen(true);

@@ -1,29 +1,25 @@
-/* .box-container {
+.box-container {
   width: 100%;
-  height: 70vh;
-  margin: 1rem;
-  display: flex;
+  height: 43.8vh;
+  display: block;
   flex-direction: row;
-  justify-content: center;
   position: relative;
-  border: 1px solid black;
+  padding-left: 1rem;
 }
-.paper {
-  width: 100%;
-  height: 90%;
-  margin: 1rem;
-  border: 3px solid red;
+
+.table-container {
+  height: 44.1vh;
 }
-.ad-insights {
-  position: relative;
-  height: 10%;
-  display: flex;
-  flex-direction: row;
-  border: 1px solid lightgray;
-  align-items: center;
-}
+
 .table {
-  height: 100%;
-  border: 1px solid lightgray;
   align-items: right;
-} */
+  height: 100%;
+}
+
+.table-body {
+  width: 50%;
+}
+
+.table-row {
+  height: 40;
+}

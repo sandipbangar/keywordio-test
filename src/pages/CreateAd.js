@@ -1,5 +1,4 @@
-import { Button, Paper, Typography, Checkbox } from "@mui/material";
-import { Box } from "@mui/system";
+import { Button, Paper, Checkbox } from "@mui/material";
 import React from "react";
 import MediaAd from "./MediaAd";
 import TextAd from "./TextAd";

@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Card, Paper, CardContent, CardMedia } from "@mui/material";
+import { Typography, CardMedia } from "@mui/material";
 import "../styles/CardsStyle.css";
 import { Route, Routes } from "react-router-dom";
 import MediaAdForm from "./MediaAdForm";
